@@ -59,7 +59,7 @@ args = parser.parse_args()
 MODEL_NAME = args.modeldir
 resW, resH = args.resolution.split('x')
 imW, imH = int(resW), int(resH)
-GRAPH_NAME = 'edgetpu.tflite'
+GRAPH_NAME = 'detect.tflite'
 LABELMAP_NAME = 'labelmap.txt'
 min_conf_threshold = 0.5
 
