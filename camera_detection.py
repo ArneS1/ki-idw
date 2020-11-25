@@ -137,13 +137,17 @@ while True:
     # Loop over all detections and draw detection box if confidence is above minimum threshold
     for i in range(len(scores)):
         if ((scores[i] > min_conf_threshold) and (scores[i] <= 1.0)):
-
+            personCounter +=1
             # If Person detected - Add Person to Counter
             object_name = labels[int(classes[i])]  # Look up object name from "labels" array using class index
             if object_name == 'person':
                 personCounter += 1
 
     publish.single("personcounter", "Die Anzahl an Personen im Bild ist: " + str(personCounter), hostname='localhost')
+
+    # Press 'q' to quit
+    if cv2.waitKey(1) == ord('q'):
+        break
 
 cv2.destroyAllWindows()
 videostream.stop()
