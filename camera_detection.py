@@ -2,6 +2,7 @@ from threading import Thread
 import cv2
 import argparse
 import importlib.util
+import os
 
 class VideoStream:
     def __init__(self, resolution=(1920, 1080), framerate=30):
