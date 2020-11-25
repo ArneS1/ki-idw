@@ -85,6 +85,9 @@ PATH_TO_LABELS = os.path.join(CWD_PATH,MODEL_NAME,LABELMAP_NAME)
 with open(PATH_TO_LABELS, 'r') as f:
     labels = [line.strip() for line in f.readlines()]
 
+# delete "???" label
+del(labels[0])
+
 # Load the TF Lite Model
 interpreter = Interpreter(model_path=PATH_TO_CKPT)
 interpreter.allocate_tensors()
