@@ -145,7 +145,7 @@ while True:
             if object_name == 'person':
                 personCounter += 1
 
-    publish.single("personcounter", "Die Anzahl an Personen im Bild ist: " + str(personCounter), hostname='localhost')
+    publish.single("personcounter", str(personCounter), hostname='localhost')
 
     # Press 'q' to quit
     if cv2.waitKey(1) == ord('q'):
