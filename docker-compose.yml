@@ -1,0 +1,27 @@
+version: '3'
+services:
+   homeassistant:
+     container_name: home-assistant
+     image: homeassistant/raspberrypi4-homeassistant:stable
+     volumes:
+       - /opt/home-assistant:/config
+       - /opt/detections:/media
+     ports:
+       - 8123:8123
+     environment:
+       - TZ=Europe/Berlin
+     restart: always
+   mqtt:
+     container_name: eclipse-mosquitto
+     image: eclipse-mosquitto
+     volumes:
+       - /opt/eclipse-mosquitto:/mosquitto
+     restart: always
+   personcounter:
+     container_name: person-counter
+     build:
+       context: ./app
+     volumes:
+       - /opt/detections:/detections
+       - /opt/personcounter:/config
+     restart: always
